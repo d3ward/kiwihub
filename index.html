@@ -114,7 +114,8 @@
             </h1>
             <h1 class="subtitle">
                 A list of working extensions on Android chromium based browsers <br>
-                Actually there is only one browser that is open-source and support extensions 
+                The extensions are tested on <a href="https:\\kiwibrowser.com">Kiwi Browser</a>
+                the only one mobile browser that is open-source and support extensions 
             </h1>
             <div class="field">
                 <div class="control">
@@ -165,6 +166,8 @@
 <script>
     var modal = document.querySelector(".modal");
     var modalbg= document.querySelector(".modal-background");
+    var modalTitle =document.querySelector(".modal-card-title");
+    var modalBody =document.querySelector(".modal-card-title");
    
     document.querySelector(".close-btn1").onclick = function () {
         modal.classList.remove("is-active");
@@ -205,6 +208,8 @@
         ],
         rowClick: function (e, row) { //trigger an alert message when the row is clicked
             //alert("Row " + row.getData().id + " Clicked!!!!");
+            modalTitle.innerHTML= row.getData().name;
+            modalBody.innerHTML="Content of extension";
             modal.classList.add("is-active");
         },
     });
