@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Working Extensions List</title>
+    <link href="src/css/bulma.min.css" rel="stylesheet">
+    <link href="src/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="src/js/tabulator.min.js"></script>
+    <style>
+        /*Theme the Tabulator element*/
+        #table {
+            background-color: #fff;
+            border: 1px solid #333;
+            border-radius: 3px;
+            user-select: none;
+            width: 100%;
+            max-width: 500px;
+            margin:auto;
+        }
+        /*Theme the header*/
+        #table .tabulator-header {
+            
+            color:#fff;
+        }
+        .tabulator .tabulator-header .tabulator-col{
+            background: #3273dc !important;
+        }
+        /*Allow column header names to wrap lines*/
+        #table .tabulator-header .tabulator-col,
+        #table .tabulator-header .tabulator-col-row-handle {
+            white-space: normal;
+            border-bottom: 1px solid #aaa;
+        }
+        /*Color the table rows*/
+        #table .tabulator-tableHolder .tabulator-table .tabulator-row,
+        #table .tabulator-tableHolder .tabulator-table .tabulator-row:nth-child(even) {
+            background-color: #fff;
+        }
+        #table .tabulator-row .tabulator-cell {
+            border-bottom: 1px solid #aaa;
+        }
+        #table .tabulator-row.tabulator-group{
+            border-top: none;
+           
+        }
+        #table .tabulator-row:last-child .tabulator-cell {
+            border-bottom: none;
+        }
+        
+        #table .tabulator-row .tabulator-cell:last-child,
+        .tabulator .tabulator-header .tabulator-col:last-child{
+            border-right: none;
+        }
+
+        .tabulator .tabulator-header {
+            border: none;
+        }
+
+        .center {
+            text-align: center;
+        }
+        .git_btn {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            width: 175px;
+            margin: 10px auto;
+            padding: 0 0 0 40px;
+            color: #efefef;
+            border-radius: 8px;
+            background-color: #173145;
+        }
+
+        .git_btn span {
+            font-size: 14px;
+            line-height: 44px;
+        }
+
+        .git_btn svg {
+            position: absolute;
+            fill: #efefef;
+            top: 2px;
+            left: 2px;
+            width: 40px;
+            height: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete close-btn1" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Content ... -->
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button close-btn2">Close</button>
+          </footer>
+        </div>
+      </div>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Working Extensions List 
+            </h1>
+            <h1 class="subtitle">
+                A list of working extensions on Android chromium based browsers <br>
+                Actually there is only one browser that is open-source and support extensions 
+            </h1>
+            <div class="field">
+                <div class="control">
+                    <label for="" class="label"> Search Extension</label>
+                    <input id="filter-value" class="input is-secondary" type="text"
+                        placeholder="e.g uBlock, Darkreader ..">
+                </div>
+            </div>
+            <div class="control">
+                <button id="filter-clear" class="button is-link"> Clear Filter</button>
+                
+            </div>
+            <div class="control has-text-weight-medium">
+               
+                
+                </p><p class="has-text-weight-bold is-italic">
+                    Click on an extension to view more info and details <br>
+                    Click on a category to collapse the extensions
+                </p> 
+                <hr>
+                <p>* MF : stands for Mobile Friendly <br>
+            </div>
+            
+            
+            <div id="table" class="mt-3"></div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>WEL</strong> is made by Eduard Ursu (<a href="https://github.com/d3ward">@d3ward</a>) © 
+            2020 All rights reserved.
+           
+          </p>
+          <a href="https://github.com/d3ward/toolz" class="git_btn">
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <path fill-rule="evenodd"
+                    d="M 16 4 C 9.371094 4 4 9.371094 4 16 C 4 21.300781 7.4375 25.800781 12.207031 27.386719 C 12.808594 27.496094 13.027344 27.128906 13.027344 26.808594 C 13.027344 26.523438 13.015625 25.769531 13.011719 24.769531 C 9.671875 25.492188 8.96875 23.160156 8.96875 23.160156 C 8.421875 21.773438 7.636719 21.402344 7.636719 21.402344 C 6.546875 20.660156 7.71875 20.675781 7.71875 20.675781 C 8.921875 20.761719 9.554688 21.910156 9.554688 21.910156 C 10.625 23.746094 12.363281 23.214844 13.046875 22.910156 C 13.15625 22.132813 13.46875 21.605469 13.808594 21.304688 C 11.144531 21.003906 8.34375 19.972656 8.34375 15.375 C 8.34375 14.0625 8.8125 12.992188 9.578125 12.152344 C 9.457031 11.851563 9.042969 10.628906 9.695313 8.976563 C 9.695313 8.976563 10.703125 8.65625 12.996094 10.207031 C 13.953125 9.941406 14.980469 9.808594 16 9.804688 C 17.019531 9.808594 18.046875 9.941406 19.003906 10.207031 C 21.296875 8.65625 22.300781 8.976563 22.300781 8.976563 C 22.957031 10.628906 22.546875 11.851563 22.421875 12.152344 C 23.191406 12.992188 23.652344 14.0625 23.652344 15.375 C 23.652344 19.984375 20.847656 20.996094 18.175781 21.296875 C 18.605469 21.664063 18.988281 22.398438 18.988281 23.515625 C 18.988281 25.121094 18.976563 26.414063 18.976563 26.808594 C 18.976563 27.128906 19.191406 27.503906 19.800781 27.386719 C 24.566406 25.796875 28 21.300781 28 16 C 28 9.371094 22.628906 4 16 4 Z" />
+            </svg>
+            <span>View on Github</span>
+        </a>
+        </div>
+      </footer>
+</body>
+<script>
+    var modal = document.querySelector(".modal");
+    var modalbg= document.querySelector(".modal-background");
+   
+    document.querySelector(".close-btn1").onclick = function () {
+        modal.classList.remove("is-active");
+    }
+    document.querySelector(".close-btn2").onclick = function () {
+        modal.classList.remove("is-active");
+    }
+    window.onclick = function (event) {
+        if (event.target == modalbg) {
+            modal.classList.remove("is-active");
+        }
+    }
+   
+
+    //create Tabulator on DOM element with id "example-table"
+    var table = new Tabulator("#table", {
+        ajaxURL:"http://www.getmydata.com/now", //ajax URL
+        responsiveLayout:"collapse",
+        layout:"fitColumns",
+        groupBy: "category",
+        groupToggleElement: "header", //toggle group on click anywhere in the group header
+        columns: [ //Define Table Columns
+            {
+                title: "Name",
+                field: "name"
+            },
+            {
+                title: "MF",
+                field: "mf",
+                formatter: "tickCross",
+                hozAlign: "center"
+            },
+            {
+                title: "Problems",
+                field: "problems",
+                hozAlign: "center"
+            },
+        ],
+        rowClick: function (e, row) { //trigger an alert message when the row is clicked
+            //alert("Row " + row.getData().id + " Clicked!!!!");
+            modal.classList.add("is-active");
+        },
+    });
+    //Define variables for input elements
+    var valueEl = document.getElementById("filter-value");
+    //Update filters on value change
+    document.getElementById("filter-value").addEventListener("keyup", () => {
+        table.setFilter("name", "like", valueEl.value);
+    });
+    //Clear filters on "Clear Filters" button click
+    document.getElementById("filter-clear").addEventListener("click", function () {
+        valueEl.value = "";
+        table.clearFilter();
+    });
+</script>
+
+</html>

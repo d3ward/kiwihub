@@ -1,0 +1,58 @@
+[
+    {
+        "name": "uBlock Origin",
+        "cwsurl": "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+        "officialurl": "https://github.com/gorhill/uBlock",
+        "mf": true,
+        "problems": "0",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "Nano Adblocker",
+        "cwsurl": "https://chrome.google.com/webstore/detail/nano-adblocker/gabbbocakeomblphkmmnoamkioajlkfo",
+        "officialurl": "https://github.com/NanoAdblocker/NanoCore",
+        "mf": true,
+        "problems": "0",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "Extensions Manager",
+        "cwsurl": "https://chrome.google.com/webstore/detail/extensions-manager-aka-sw/lpleipinonnoibneeejgjnoeekmbopbc?hl=en",
+        "officialurl": "none",
+        "mf": true,
+        "problems": "0",
+        "category": "Productivity"
+    },
+    {
+        "name": "Universal Bypass",
+        "cwsurl": "none",
+        "officialurl": "https://github.com/Sainan/Universal-Bypass",
+        "mf": true,
+        "problems": "0",
+        "category": "Productivity"
+    },
+    {
+        "name": "Bitwarden",
+        "cwsurl": "https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb",
+        "officialurl": "https://bitwarden.com/",
+        "mf": true,
+        "problems": "0",
+        "category": "Productivity"
+    },
+    {
+        "name": "HTTPS Everywhere",
+        "cwsurl": "https://chrome.google.com/webstore/detail/https-everywhere/gcbommkclmclpchllfjekcdonpmejbdp",
+        "officialurl": "https://www.eff.org/https-everywhere",
+        "mf": true,
+        "problems": "0",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "Dark Reader",
+        "cwsurl": "https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
+        "officialurl": "https://darkreader.org/",
+        "mf": true,
+        "problems": "0",
+        "category": "Accessibility"
+    }
+]
