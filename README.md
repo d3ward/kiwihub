@@ -25,12 +25,6 @@ Method 2
 Method 3
 - With issues , suggest an improvements to the project, like a feature or report a typo/bug
  
-
-### Extension criteria 
-    - From CWS or Open-source extensions 
-    - Don't add extensions that doesn't work
-
-
 ### License and credits
 This project is licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/
 
