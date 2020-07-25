@@ -14,12 +14,13 @@ There is a section and corresponding file for each Category.
 
 Method 1
  - Create an issue with the required info of an extension
+Method 2 
+- Create a pull request
  
 
 ### Extension criteria 
     - From CWS or Open-source extensions 
-    - Don't add extensions that have viruses 
-    -
+    - Don't add extensions that doesn't work
 
 
 ### License and credits
