@@ -27,4 +27,5 @@ Method 3
 This project is licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 [Bulma](https://bulma.io/) - [MIT License](https://opensource.org/licenses/mit-license.php)
+
 [Tabulator](https://github.com/olifolkerd/tabulator) - [MIT License](https://github.com/olifolkerd/tabulator/blob/master/LICENSE)
