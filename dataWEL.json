@@ -8,12 +8,12 @@
         "category": "Privacy & Security"
     },
     {
-        "name": "Nano Adblocker",
-        "cwsurl": "https://chrome.google.com/webstore/detail/nano-adblocker/gabbbocakeomblphkmmnoamkioajlkfo",
-        "officialurl": "https://github.com/NanoAdblocker/NanoCore",
+        "name": "Wikiwand",
+        "cwsurl": "https://chrome.google.com/webstore/detail/wikiwand-wikipedia-modern/emffkefkbkpkgpdeeooapgaicgmcbolj",
+        "officialurl": "https://www.wikiwand.com",
         "mf": true,
         "problems": "0",
-        "category": "Privacy & Security"
+        "category": "Productivity / Enhancement"
     },
     {
         "name": "Extensions Manager",
