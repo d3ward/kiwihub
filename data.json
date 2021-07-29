@@ -30,6 +30,26 @@
         "category": "Productivity"
     },
     {
+        "name": "Floatly",
+        "author":"d3ward",
+        "description":"Floatly is an awesome floating button that brings quick actions from any website.",
+        "logo":"https://raw.githubusercontent.com/d3ward/floatly/master/src/png/icon152.png",
+        "cwsurl": "",
+        "officialurl": "",
+        "githuburl":"https://github.com/d3ward/floatly",
+        "category": "Accessibility"
+    },
+    {
+        "name": "MTI",
+        "author":"d3ward",
+        "description":"Meta Theme Injector is an extension that let you customize the theme-color meta tag on websites.",
+        "logo":"https://raw.githubusercontent.com/d3ward/mti/master/src/png/icon144.png",
+        "cwsurl": "",
+        "officialurl": "",
+        "githuburl":"https://github.com/d3ward/mti",
+        "category": "Accessibility"
+    },
+    {
         "name": "Dark Reader",
         "author":"Darkreader" ,
         "description": "Dark Reader analyzes web pages and aims to reduce the eyestrain while you browse the web.",

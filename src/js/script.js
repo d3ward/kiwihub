@@ -190,7 +190,18 @@
     
   });
 
-
+  function shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
 
 function appendData(data) {
     var ext_grid = document.getElementById("ext-grid");
@@ -209,7 +220,7 @@ fetch('https://raw.githubusercontent.com/d3ward/awesome-extensions-for-kiwi/mast
   return response.json();
 })
 .then(function (data) {
-  appendData(data);
+  appendData(shuffle(data));
   new aos();
 })
 .catch(function (err) {
