@@ -30,6 +30,26 @@
         "category": "Productivity"
     },
     {
+        "name": "Floccus",
+        "author":"Marcel Klehr",
+        "description":"Sync your bookmarks across browsers via Nextcloud, WebDAV or Google Drive",
+        "logo":"https://raw.githubusercontent.com/floccusaddon/floccus/develop/icons/logo_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg",
+        "officialurl": "https://floccus.org/",
+        "githuburl":"https://github.com/floccusaddon/floccus",
+        "category": "Productivity"
+    },
+    {
+        "name": "Save Tabs",
+        "author":"Karna98",
+        "description":"Export and Import Tabs with Cross-Browser support.",
+        "logo":"https://raw.githubusercontent.com/Karna98/Save-Tabs/main/extension/icons/Save_Tabs_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn",
+        "officialurl": "https://karna98.github.io/Save-Tabs/",
+        "githuburl":"https://github.com/Karna98/Save-Tabs",
+        "category": "Productivity"
+    },
+    {
         "name": "Floatly",
         "author":"d3ward",
         "description":"Floatly is an awesome floating button that brings quick actions from any website.",
