@@ -1,11 +1,14 @@
-## Working Extension List
+## Awesome Extensions for Kiwi
 
-A curated list of extensions that works for Android chromium browsers
-The extensions are mainly tested on [Kiwi Browser](kiwibrowser.com) the only and first open-source browser for Android with extension support 
+A curated list of extensions that works for Kiwi Browser 
+The list contains only privacy friendly and open source extensions
+
+[Kiwi Browser](https://kiwibrowser.com/) is the only and first open-source browser that brings desktop Chrome extensions on Android!
+
 
 
 ### Contributing
-All the data is managed through a JSON file ( dataWEL.json )
+All the data is managed through a JSON file ( data.json )
 
 Keeping the list up to date is not easy and time-consuming, but if you want to contribute and update the
                 list for the community , you're welcome
