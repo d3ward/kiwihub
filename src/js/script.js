@@ -98,7 +98,7 @@
       }
       let observer = new IntersectionObserver(callback, {
         root: null,
-        threshold: 0.1
+        threshold: 0
       });
       t.items.forEach((item) => {
         observer.observe(item);
@@ -184,7 +184,7 @@
     new themeManager();
     new navbar();
     new gotop();
-    new aos();
+    
     new modal("#mdl1");
     pagesRoute();
     
@@ -196,8 +196,12 @@ function appendData(data) {
     var ext_grid = document.getElementById("ext-grid");
     for (var i = 0; i < data.length; i++) {
       var div = document.createElement("div");
-      div.innerHTML = 'Name: ' + data[i].name + ' ' + data[i].description;
-      mainContainer.appendChild(div);
+      div.className="col-4";
+      div.innerHTML = '<div class="card  _aos-bottom"><div class="badges"><div>'+data[i].category+'</div></div>'+
+      '<div class="img-w"><img src="'+data[i].logo+'" alt=""></div>'+
+      '<h3 class="_txt-center">'+data[i].name+'</h3><p>'+data[i].description+'</p>'+
+      '<a href="'+data[i].githuburl+'" class="btn">GitHub</a></div>';
+      ext_grid.appendChild(div);
     }
   }
 fetch('https://raw.githubusercontent.com/d3ward/awesome-extensions-for-kiwi/master/data.json')
@@ -206,6 +210,7 @@ fetch('https://raw.githubusercontent.com/d3ward/awesome-extensions-for-kiwi/mast
 })
 .then(function (data) {
   appendData(data);
+  new aos();
 })
 .catch(function (err) {
   console.log(err);

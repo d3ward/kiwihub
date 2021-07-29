@@ -4,9 +4,9 @@
         "author": "gorhill",
         "description":"An efficient blocker add-on for various browsers. Fast, potent, and lean.",
         "logo": "https://raw.githubusercontent.com/gorhill/uBlock/master/src/img/icon_128.png",
-        "cws-url": "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
-        "official-url": "https://ublockorigin.com/",
-        "github-url":"https://github.com/gorhill/uBlock",
+        "cwsurl": "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+        "officialurl": "https://ublockorigin.com/",
+        "githuburl":"https://github.com/gorhill/uBlock",
         "category": "Privacy & Security"
     },
     {
@@ -14,9 +14,9 @@
         "author": "Sainan",
         "description" : "Don't waste your time with compliance. Universal Bypass circumvents annoying link shorteners.",
         "logo":"https://raw.githubusercontent.com/Sainan/Universal-Bypass/master/icon/512.png",
-        "cws-url": "none",
-        "official-url":"https://universal-bypass.org/",
-        "github-url": "https://github.com/Sainan/Universal-Bypass",
+        "cwsurl": "none",
+        "officialurl":"https://universal-bypass.org/",
+        "githuburl": "https://github.com/Sainan/Universal-Bypass",
         "category": "Productivity"
     },
     {
@@ -24,9 +24,9 @@
         "author":"Bitwarde Inc.",
         "description":"Open source password management solutions for individuals, teams, and business organizations.",
         "logo":"https://raw.githubusercontent.com/bitwarden/browser/master/src/images/icon128.png",
-        "cws-url": "https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb",
-        "official-url": "https://bitwarden.com/",
-        "github-url":"https://github.com/bitwarden/browser",
+        "cwsurl": "https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb",
+        "officialurl": "https://bitwarden.com/",
+        "githuburl":"https://github.com/bitwarden/browser",
         "category": "Productivity"
     },
     {
@@ -34,9 +34,9 @@
         "author":"Darkreader" ,
         "description": "Dark Reader analyzes web pages and aims to reduce the eyestrain while you browse the web.",
         "logo": "https://raw.githubusercontent.com/darkreader/darkreader/master/src/icons/dr_128.png",
-        "cws-url": "https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
-        "official-url": "https://darkreader.org/",
-        "github-url":"https://github.com/darkreader/darkreader",
+        "cwsurl": "https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
+        "officialurl": "https://darkreader.org/",
+        "githuburl":"https://github.com/darkreader/darkreader",
         "category": "Accessibility"
     }
 ]
