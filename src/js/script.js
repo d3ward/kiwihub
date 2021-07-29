@@ -200,7 +200,7 @@ function appendData(data) {
       div.innerHTML = '<div class="card  _aos-bottom"><div class="badges"><div>'+data[i].category+'</div></div>'+
       '<div class="img-w"><img src="'+data[i].logo+'" alt=""></div>'+
       '<h3 class="_txt-center">'+data[i].name+'</h3><p>'+data[i].description+'</p>'+
-      '<a href="'+data[i].githuburl+'" class="btn">GitHub</a></div>';
+      '<a href="'+data[i].githuburl+'" class="btn" target="_blank">GitHub</a></div>';
       ext_grid.appendChild(div);
     }
   }
