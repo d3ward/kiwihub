@@ -743,8 +743,15 @@ button>svg,
     margin-bottom: 1rem;
 }
 
-.card>a {
+.card>.links {
     margin-top: auto ;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.card>.links >*{
+    width: 100%;
+    margin: 0;
 }
 
 .badges {
