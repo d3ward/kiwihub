@@ -715,7 +715,7 @@ button>svg,
 .card {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
     height: 100%;
     padding: 1rem;
     background: var(--bg-card);
@@ -726,6 +726,7 @@ button>svg,
 .card>* {
     width: 100%;
     margin: 0;
+    margin-top: .5rem;
 }
 
 .card>.img-w {
@@ -738,14 +739,20 @@ button>svg,
     width: 100px;
     height: 100px;
 }
+.card>p{
+    margin-bottom: 1rem;
+}
 
 .card>a {
-    align-self: flex-end;
+    margin-top: auto ;
 }
 
 .badges {
+    margin: 0;
     margin-top: -2rem;
+    height: 1.8rem;
     z-index: 1;
+    position: absolute;
 }
 
 .badges>* {
