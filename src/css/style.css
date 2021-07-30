@@ -1939,16 +1939,14 @@ svg.wave>path {
 }
 
 
-@keyframes animate {
+@keyframes rotate-fade {
     0%{
         transform: translateY(0) rotate(0deg);
         opacity: 1;
-        border-radius: 0;
     }
     100%{
         transform: translateY(-1000px) rotate(720deg);
         opacity: 0;
-        border-radius: 50%;
     }
 }
 
@@ -1969,8 +1967,8 @@ svg.wave>path {
     list-style: none;
     width: 25px;
     height: 25px;
-    background: var(--bg-square);
-    animation: animate 5s linear infinite;
+    background-image: url("../svg/puzzle.svg");
+    animation: rotate-fade 5s linear infinite;
 }
 
 .squares li:nth-child(0) {
