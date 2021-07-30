@@ -63,7 +63,7 @@
         "name": "MTI",
         "author":"d3ward",
         "description":"Meta Theme Injector is an extension that let you customize the theme-color meta tag on websites.",
-        "logo":"https://raw.githubusercontent.com/d3ward/mti/master/src/png/icon144.png",
+        "logo":"https://raw.githubusercontent.com/d3ward/mti/548a2660a0cd9b706c27b8bc01b34fca43c9209c/src/svg/icon256.svg",
         "cwsurl": "",
         "officialurl": "",
         "githuburl":"https://github.com/d3ward/mti",
