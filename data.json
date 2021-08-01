@@ -10,6 +10,16 @@
         "category": "Privacy & Security"
     },
     {
+        "name": "ClearURLs",
+        "author": "ClearURLs",
+        "description" : "ClearURLs is an add-on based on the new WebExtensions technology and will automatically remove tracking elements from URLs to help protect your privacy.",
+        "logo":"https://raw.githubusercontent.com/ClearURLs/Addon/master/img/clearurls_128x128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/clearurls/lckanjgmijmafbedllaakclkaicjfmnk",
+        "officialurl":"https://docs.clearurls.xyz/latest/",
+        "githuburl": "https://github.com/ClearURLs/Addon",
+        "category": "Productivity"
+    },
+    {
         "name": "Universal Bypass",
         "author": "Sainan",
         "description" : "Don't waste your time with compliance. Universal Bypass circumvents annoying link shorteners.",
@@ -78,5 +88,15 @@
         "officialurl": "https://darkreader.org/",
         "githuburl":"https://github.com/darkreader/darkreader",
         "category": "Accessibility"
-    }
+    },
+    {
+        "name": "Violentmonkey",
+        "author":"violentmonkey",
+        "description":"Violentmonkey provides userscripts support for browsers. It works on browsers with WebExtensions support.",
+        "logo":"https://raw.githubusercontent.com/violentmonkey/violentmonkey/master/src/resources/icon.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag",
+        "officialurl": "https://violentmonkey.github.io/",
+        "githuburl":"https://github.com/violentmonkey/violentmonkey",
+        "category": "Productivity"
+    },
 ]
