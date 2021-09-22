@@ -20,13 +20,13 @@
         "category": "Productivity"
     },
     {
-        "name": "Universal Bypass",
-        "author": "Sainan",
-        "description" : "Don't waste your time with compliance. Universal Bypass circumvents annoying link shorteners.",
-        "logo":"https://raw.githubusercontent.com/Sainan/Universal-Bypass/master/icon/512.png",
+        "name": "FastForward",
+        "author": "FastForward Team",
+        "description" : "Don't waste your time with compliance. FastForward automatically skips annoying link shorteners.",
+        "logo":"https://github.com/FastForwardTeam/FastForward/blob/main/src/icon/512.png?raw=true",
         "cwsurl": "none",
-        "officialurl":"https://universal-bypass.org/",
-        "githuburl": "https://github.com/Sainan/Universal-Bypass",
+        "officialurl":"https://fastforward.team/",
+        "githuburl": "https://github.com/FastForwardTeam/FastForward",
         "category": "Productivity"
     },
     {
