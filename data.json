@@ -10,6 +10,16 @@
         "category": "Privacy & Security"
     },
     {
+        "name": "Bypass Paywalls",
+        "author": "iamadamdev",
+        "description":"a web browser extension to help bypass paywalls for selected sites.",
+        "logo": "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/src/icons/bypass.png",
+        "cwsurl": "none",
+        "officialurl": "",
+        "githuburl":"https://github.com/iamadamdev/bypass-paywalls-chrome",
+        "category": "Productivity"
+    },
+    {
         "name": "ClearURLs",
         "author": "ClearURLs",
         "description" : "ClearURLs is an add-on based on the new WebExtensions technology and will automatically remove tracking elements from URLs to help protect your privacy.",
