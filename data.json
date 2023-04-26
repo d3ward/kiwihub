@@ -43,7 +43,7 @@
         "name": "Bitwarden",
         "author":"Bitwarde Inc.",
         "description":"Open source password management solutions for individuals, teams, and business organizations.",
-        "logo":"https://raw.githubusercontent.com/bitwarden/browser/master/src/images/icon128.png",
+        "logo":"https://raw.githubusercontent.com/bitwarden/brand/master/icons/icon.svg",
         "cwsurl": "https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb",
         "officialurl": "https://bitwarden.com/",
         "githuburl":"https://github.com/bitwarden/browser",
