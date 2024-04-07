@@ -1,0 +1,123 @@
+[
+    {
+        "name": "NextNTP",
+        "author": "d3ward",
+        "description":"Highly customizable and mobile-first New Tab Page, free and open-source, blends great design with privacy and performance",
+        "logo": "https://raw.githubusercontent.com/d3ward/nextntp/develop/src/assets/nextntp.svg",
+        "cwsurl": false,
+        "officialurl": "https://d3ward.github.io/nextntp",
+        "githuburl":"https://github.com/d3ward/nextntp",
+        "category": "Productivity"
+    },
+    {
+        "name": "uBlock Origin",
+        "author": "gorhill",
+        "description":"An efficient blocker add-on for various browsers. Fast, potent, and lean.",
+        "logo": "https://raw.githubusercontent.com/gorhill/uBlock/master/src/img/icon_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm",
+        "officialurl": "https://ublockorigin.com/",
+        "githuburl":"https://github.com/gorhill/uBlock",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "ClearURLs",
+        "author": "ClearURLs",
+        "description" : "ClearURLs is an add-on based on the new WebExtensions technology and will automatically remove tracking elements from URLs to help protect your privacy.",
+        "logo":"https://raw.githubusercontent.com/ClearURLs/Addon/master/img/clearurls_128x128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/clearurls/lckanjgmijmafbedllaakclkaicjfmnk",
+        "officialurl":"https://docs.clearurls.xyz/latest/",
+        "githuburl": "https://github.com/ClearURLs/Addon",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "FastForward",
+        "author": "FastForward Team",
+        "description" : "Don't waste your time with compliance. FastForward automatically skips annoying link shorteners.",
+        "logo":"https://github.com/FastForwardTeam/FastForward/blob/main/src/icon/512.png?raw=true",
+        "cwsurl": "https://chromewebstore.google.com/detail/fastforward/icallnadddjmdinamnolclfjanhfoafe",
+        "officialurl":"https://fastforward.team/",
+        "githuburl": "https://github.com/FastForwardTeam/FastForward",
+        "category": "Productivity",
+        "archived": true
+    },
+    {
+        "name": "Bitwarden",
+        "author":"Bitwarden Inc.",
+        "description":"Open source password management solutions for individuals, teams, and business organizations.",
+        "logo":"https://raw.githubusercontent.com/bitwarden/brand/master/icons/icon.svg",
+        "cwsurl": "https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb",
+        "officialurl": "https://bitwarden.com/",
+        "githuburl":"https://github.com/bitwarden/browser",
+        "category": "Privacy & Security"
+    },
+    {
+        "name": "Floccus",
+        "author":"Marcel Klehr",
+        "description":"Sync your bookmarks across browsers via Nextcloud, WebDAV or Google Drive",
+        "logo":"https://raw.githubusercontent.com/floccusaddon/floccus/develop/icons/logo_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg",
+        "officialurl": "https://floccus.org/",
+        "githuburl":"https://github.com/floccusaddon/floccus",
+        "category": "Productivity"
+    },
+    {
+        "name": "Save Tabs",
+        "author":"Karna98",
+        "description":"Export and Import Tabs with Cross-Browser support.",
+        "logo":"https://raw.githubusercontent.com/Karna98/Save-Tabs/main/extension/icons/Save_Tabs_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/save-tabs/ljokfgphjbhjheflldgfmjligcmcmhmn",
+        "officialurl": "https://karna98.github.io/Save-Tabs/",
+        "githuburl":"https://github.com/Karna98/Save-Tabs",
+        "category": "Productivity"
+    },
+    {
+        "name": "Floatly",
+        "author":"d3ward",
+        "description":"Floatly is an awesome floating button that brings quick actions from any website.",
+        "logo":"https://raw.githubusercontent.com/d3ward/floatly/main/src/assets/svg/floatly.svg",
+        "cwsurl": false,
+        "officialurl": "",
+        "githuburl":"https://github.com/d3ward/floatly",
+        "category": "Accessibility"
+    },
+    {
+        "name": "MTI",
+        "author":"d3ward",
+        "description":"Meta Theme Injector is an extension that let you customize the theme-color meta tag on websites.",
+        "logo":"https://raw.githubusercontent.com/d3ward/mti/548a2660a0cd9b706c27b8bc01b34fca43c9209c/src/svg/icon256.svg",
+        "cwsurl": false,
+        "officialurl": "",
+        "githuburl":"https://github.com/d3ward/mti",
+        "category": "Accessibility"
+    },
+    {
+        "name": "Bypass Paywalls",
+        "author": "iamadamdev",
+        "description":"A web browser extension to help bypass paywalls for selected sites.",
+        "logo": "https://raw.githubusercontent.com/iamadamdev/bypass-paywalls-chrome/master/src/icons/bypass.png",
+        "cwsurl": false,
+        "officialurl": "",
+        "githuburl":"https://github.com/iamadamdev/bypass-paywalls-chrome",
+        "category": "Productivity"
+    },
+    {
+        "name": "Dark Reader",
+        "author":"Darkreader" ,
+        "description": "Dark Reader analyzes web pages and aims to reduce the eyestrain while you browse the web.",
+        "logo": "https://raw.githubusercontent.com/darkreader/darkreader/master/src/icons/dr_128.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh",
+        "officialurl": "https://darkreader.org/",
+        "githuburl":"https://github.com/darkreader/darkreader",
+        "category": "Accessibility"
+    },
+    {
+        "name": "Violentmonkey",
+        "author":"violentmonkey",
+        "description":"An open source userscript manager. Violentmonkey provides userscripts support for browsers.",
+        "logo":"https://raw.githubusercontent.com/violentmonkey/violentmonkey/master/src/resources/icon.png",
+        "cwsurl": "https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag",
+        "officialurl": "https://violentmonkey.github.io/",
+        "githuburl":"https://github.com/violentmonkey/violentmonkey",
+        "category": "Productivity"
+    }
+]

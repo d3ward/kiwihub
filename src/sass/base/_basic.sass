@@ -1,0 +1,72 @@
+/* ---------------- Basic resets and improvements --------------- */
+*,
+*::before,
+*::after
+	box-sizing: border-box
+*:focus:not(:focus-visible)
+	outline: 0
+*:focus-visible
+	outline: .1rem solid var(--focus)
+	outline-offset: .1rem
+html
+	text-rendering: optimizeLegibility
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif
+	font-size: 12pt
+	color: var(--txt)
+	background: var(--bg)
+body
+	min-height: 100vh
+	display: flex
+	flex-flow: wrap column
+	gap: .5rem
+	align-items: center
+	justify-content: center
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1549%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1550%26quot%3b)'%3e%3c/rect%3e%3cpath d='M -219.13233145675542%2c218 C -75.13%2c253 212.87%2c395.4 500.8676685432446%2c393 C 788.87%2c390.6 932.87%2c227 1220.8676685432447%2c206 C 1508.87%2c185 1897.04%2c284.6 1940.8676685432447%2c288 C 1984.69%2c291.4 1540.17%2c236 1440%2c223' stroke='rgba(214%2c 255%2c 251%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -56.012425196517825%2c295 C 87.99%2c285.2 375.99%2c231.2 663.9875748034822%2c246 C 951.99%2c260.8 1095.99%2c363.4 1383.9875748034822%2c369 C 1671.99%2c374.6 2092.79%2c282 2103.987574803482%2c274 C 2115.19%2c266 1572.8%2c318 1440%2c329' stroke='rgba(214%2c 255%2c 251%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -296.27344205036496%2c142 C -152.27%2c170.6 135.73%2c267.4 423.72655794963504%2c285 C 711.73%2c302.6 855.73%2c216 1143.726557949635%2c230 C 1431.73%2c244 1804.47%2c370.6 1863.726557949635%2c355 C 1922.98%2c339.4 1524.75%2c192.6 1440%2c152' stroke='rgba(214%2c 255%2c 251%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -628.4718539130304%2c199 C -484.47%2c218.2 -196.47%2c298.4 91.52814608696966%2c295 C 379.53%2c291.6 523.53%2c176.8 811.5281460869696%2c182 C 1099.53%2c187.2 1405.83%2c313.6 1531.5281460869696%2c321 C 1657.22%2c328.4 1458.31%2c239.4 1440%2c219' stroke='rgba(214%2c 255%2c 251%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1549'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='84.72%25' y1='139.29%25' x2='15.28%25' y2='-39.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1550'%3e%3cstop stop-color='rgba(14%2c 42%2c 71%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(52%2c 169%2c 158%2c 1)' offset='0.6'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e")
+	background-size: 150% 100%
+
+	@media (prefers-reduced-motion: no-preference)
+		scroll-behavior: smooth
+body,html
+	margin: 0
+	padding: 0
+header>*,main>*,footer>*
+	max-width: 60rem
+
+ol, ul
+	list-style: none
+	display: flex
+	flex-direction: column
+	gap: .3rem
+.keep-ls
+	list-style: unset
+img
+	max-width: 100%
+
+table
+	border-collapse: collapse
+
+textarea
+	white-space: revert
+
+hr
+	border: 0
+	border-top: .1rem solid var(--brd)
+
+section
+	overflow-x: hidden
+	display: flex
+	flex-direction: column
+
+.better_r
+	-webkit-font-smoothing: antialiased!important
+	-moz-font-smoothing: antialiased!important
+	font-size: 16px
+	letter-spacing: .7px
+	line-height: 1.5
+	text-align: justify
+	text-rendering: optimizelegibility!important
+
+.btn-kh
+	top: 4rem
+	position: sticky
+	z-index: 10

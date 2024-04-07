@@ -1,0 +1,91 @@
+<html lang="en">
+	<%- include('partials/head.ejs', { 
+		page: 'guides' , 
+		title:'Guides - KiwiHub', 
+		description:'', 
+		url: 'd3ward.github.io/kiwihub/guides' ,
+		preview_thumbnail:'https://d3ward.github.io/kiwihub/assets/preview_kiwihub.jpg',
+		keywords:'guides,help,tips' }) %>
+
+	<body>
+		<%- include('partials/support_me.ejs') %>
+		<%- include('partials/changelog.ejs') %>
+		<%- include('partials/header.ejs', {page:'guides'}) %>
+		<main>
+			<a href="/kiwihub/" class="btn btn-sgd btn-kh">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+				<path d="M5 12l14 0" />
+				<path d="M5 12l6 6" />
+				<path d="M5 12l6 -6" />
+			  </svg>
+			KiwiHub </a>
+			<a href="/kiwihub/guides.html" class="btn btn-sgd btn-kh">
+				<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+							<path d="M9 9l1 0" />
+							<path d="M9 13l6 0" />
+							<path d="M9 17l6 0" />
+						</svg>
+				Guides </a>
+			<div class="pages">
+				<section id="home" class="page-active">
+					<div class="card _ta-center">
+						<div>
+							<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+							<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+							<path d="M9 9l1 0" />
+							<path d="M9 13l6 0" />
+							<path d="M9 17l6 0" />
+						</svg>
+						</div>
+						<div>
+							<h3><strong>Guides for Kiwi Browser</strong></h3>
+							<p>A curated list of custom guides for Kiwi Browser</p>
+						</div>
+					</div>
+					<% const guides=require('./data/guides.json') %>
+						<div class="grid _overflowhidden" id="ext-grid">
+							<% for (let key in guides) { %>
+								<% value=guides[key]%>
+									<% if (key !='default' && !value.hide) { %>
+										<div class="col-6">
+											<div class="card _aos-bottom" topage="#<%= value.id %>">
+												<h3>
+													<%= value.title %>
+												</h3>
+												<h6>
+													by <%= value.author %>
+												</h6>
+												<p>
+													<%= value.description %>
+												</p>
+												<span><%= value.date %></span>
+												
+											</div>
+										</div>
+									<% } %>
+							<% } %>
+						</div>
+				</section>
+				<section id="content" class="card">
+	
+				</section>
+			</div>
+			
+		</main>
+		<%- include('partials/footer.ejs') %>
+    <%- include('partials/gotop.ejs') %>
+
+
+	</body>
+
+
+</html>

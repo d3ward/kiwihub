@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('partials/head.ejs',
+	{
+		page: 'index',
+		title:'KiwiHub - Home',
+		description:'A curated collection of extensions, userscripts, guides, and actions for Kiwi Browser users, aimed at enhancing browsing experience. Open-source and community-driven',
+		url: 'd3ward.github.io/kiwihub/',
+		preview_thumbnail:'https://d3ward.github.io/kiwihub/assets/preview_kiwihub.jpg',
+		keywords:'kiwi,kiwi browser,extensions,userscripts,web design,open source,open-source,free,privacy'
+	}) %>
+	
+<body>
+	<%- include('partials/support_me.ejs') %>
+	<%- include('partials/changelog.ejs') %>
+    <%- include('partials/header.ejs', {page:'index'}) %>
+    <main class="_ta-center">
+        <div class="_aos-top card">
+            <div class="img-w _bg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="var(--primary)" version="1.1" viewBox="0 0 512 512"><path d="M176 0c-26.5 0-48 21.5-48 48v48H64c-35.3 0-64 28.7-64 64v256c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64h-64V48c0-26.5-21.5-48-48-48H176zm0 32h160c8.8 0 16 7.2 16 16v48H160V48c0-8.8 7.2-16 16-16zM64 128h384c17.7 0 32 14.3 32 32v256c0 17.7-14.3 32-32 32h-85.27c6.013-19.987 7.44-42.393 3.15-65.273-9.322-49.728-42.973-87.61-83.019-99.135-4.794-1.38-8.405-5.472-9.484-10.342-.945-4.268.108-8.794 3.375-11.697 26.052-23.15 57.308-40.438 91.633-49.944 1.627-.45 1.437-2.803-.248-2.894-36.566-1.972-71.115 7.45-100.207 25.174-6.807 4.147-15.58 3.227-22.184-1.239-9.203-6.226-20.099-10.214-31.965-11.123-36.465-2.794-68.294 24.546-71.092 61.065-1.46 19.064 5.28 36.86 17.243 49.916 5.073 5.536 7.265 13.44 4.937 20.578-6.744 20.684-8.51 44.123-4.017 68.08A143.393 143.393 0 0 0 168.66 448H64c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32zm158.555 129.674a8.63 8.429 0 0 1 8.629 8.428 8.63 8.429 0 0 1-8.63 8.43 8.63 8.429 0 0 1-8.628-8.43 8.63 8.429 0 0 1 8.629-8.428z"/></svg>
+            </div>
+            <h1 class="_mono">KiwiHub</h1>
+            <p>A curated collection of extensions, userscripts, guides, and actions for Kiwi Browser users, aimed at enhancing browsing experience</p>
+        </div>
+        <div class="_2-col">
+            <div>
+                <a href="./extensions.html">
+                    <div class="card _aos-bottom  _txt">
+                        <div class="img-w">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                             </svg>
+                        </div>
+                        <h6 class="_txt-center">Extensions</h6>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="./userscripts.html">
+                    <div class="card _aos-bottom  _txt">
+                        <div class="img-w">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M17 20h-11a3 3 0 0 1 0 -6h11a3 3 0 0 0 0 6h1a3 3 0 0 0 3 -3v-11a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v8"></path>
+                             </svg>
+                        </div>
+                        <h6 class="_txt-center">Userscripts</h6>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="./actions.html">
+                    <div class="card _aos-bottom  _txt">
+                        <div class="img-w">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M6 21l15 -15l-3 -3l-15 15l3 3"></path>
+                                <path d="M15 6l3 3"></path>
+                                <path d="M9 3a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                                <path d="M19 13a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+                             </svg>
+                        </div>
+                        <h6 class="_txt-center">Custom Actions</h6>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="./guides.html">
+                    <div class="card _aos-bottom  _txt">
+                        <div class="img-w">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                <path d="M9 9l1 0" />
+                                <path d="M9 13l6 0" />
+                                <path d="M9 17l6 0" />
+                            </svg>
+                        </div>
+                        <h6 class="_txt-center">Guides</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+    <%- include('partials/gotop.ejs') %>
+</body>
+
+</html>

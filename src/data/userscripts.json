@@ -1,0 +1,56 @@
+[
+	{
+		"id" : "sac",
+		"name": "Set Autocomplete",
+		"description": "The autocomplete attribute specifies whether a form should have autocomplete on or off. When autocomplete is on, the browser automatically complete values based on values that the user has entered before. This script disables the autocomplete list on form inputs",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/setAutocomplete.user.js"
+	},
+	{
+		"id" : "sus",
+		"name": "Set User Select",
+		"description": "The user-select CSS property controls whether the user can select text. This doesn't have any effect on content loaded as chrome, except in textboxes.This script force-enable the text selection",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/setUserSelect.user.js"
+	},
+	{
+		"id" : "tbs",
+		"name": "TopBottom Scroller",
+		"description": "Script that add 2 buttons at rigth middle to scroll by scree height to top or bottom",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/tbScroller.user.js"
+	},
+	{
+		"id" : "as",
+		"name": "Awesome Scroller",
+		"description": "Script to easier scroll with a fake awesome scrollbar",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/awesomeScroller.user.js"
+	},
+	{
+		"id" : "stt",
+		"name": "Scroll to Top",
+		"description": "Script to scroll to top with smooth scroll",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/scrollToTop.user.js"
+	},
+	{
+		"id" : "ndao",
+		"name": "no Delay Animation Opacity",
+		"description": "Script to disable animation delay opacity",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/noADO.user.js"
+	},
+	{
+		"id" : "rdb",
+		"name": "GH Repo Download Button",
+		"description": "Script that add a button to download a github repository",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/repoDownload.user.js"
+	},
+	{
+		"id" : "gbi",
+		"name": "Google background image",
+		"description": "Change Google Search Engine background image every day with random wallpaper",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/gWallpaper.user.js"
+	},
+	{
+		"id" : "r45",
+		"name": "Rotate 45°",
+		"description": "Simple script to rotate images by 45° on each click",
+		"url": "https://github.com/d3ward/scriptz/raw/master/src/rotateThis.user.js"
+	}
+]

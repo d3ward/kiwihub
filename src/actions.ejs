@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head.ejs',
+		{
+			page:'actions',
+			title:'Actions - KiwiHub',
+			description:'',
+			url: 'd3ward.github.io/kiwihub/actions',
+			preview_thumbnail:'https://d3ward.github.io/kiwihub/assets/preview_kiwihub.jpg',
+			keywords:'kiwi, kiwi browser, kiwihub, actions, open source, free'
+		}) %>
+
+<body>
+	<%- include('partials/changelog.ejs') %>
+	<%- include('partials/support_me.ejs') %>
+	<%- include('partials/header.ejs', {page:'actions'}) %>
+
+	<main>
+		<a href="/kiwihub/" class="btn btn-sgd btn-kh">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+				<path d="M5 12l14 0" />
+				<path d="M5 12l6 6" />
+				<path d="M5 12l6 -6" />
+			  </svg>
+			KiwiHub </a>
+			<a href="" class="btn btn-sgd btn-kh">
+			
+			<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-dot"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg>
+			New Action </a>
+			<div class="card _ta-center">
+			<div class="_aos-top">
+				<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<path d="M6 21l15 -15l-3 -3l-15 15l3 3"></path>
+					<path d="M15 6l3 3"></path>
+					<path d="M9 3a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+					<path d="M19 13a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+				 </svg>
+			</div>
+			<div class="_aos-bottom">
+				<h3><strong>Actions for Kiwi Browser</strong></h3>
+				<p>A curated list of custom actions for Kiwi Browser</p>
+			</div>
+		</div>
+		<section>
+			<% const actions=require('./data/actions.json') %>
+				<div class="grid _overflowhidden" id="ext-grid" style="min-height: 100vh;">
+					<% for (let key in actions) { %>
+						<% value=actions[key]%>
+							<% if (key !='default' && !value.hide) { %>
+								<div class="col-6">
+									<div class="card _aos-bottom">
+										<h3 class="_txt-center">
+											<%= value.name %>
+										</h3>
+										<p>
+											<%= value.description %>
+										</p>
+										<div>
+											<% if (value.params && value.params.length > 0) { %>
+												<% for (let param of value.params) { %>
+												<div class="field">
+													<label for="<%= param %>"><%= param %>:</label>
+												  <input type="text" id="<%=value.id%>_<%=param%>" class="param-i">
+												</div>
+												<% } %>
+											  <% } %>
+										</div>
+										<pre><code class="language-javascript" id="previewCode_<%=value.id%>">
+											<%= value.code %>
+										</code></pre>
+									</div>
+								</div>
+							<% } %>
+					<% } %>
+				</div>
+		</section>
+	</main>
+    <%- include('partials/footer.ejs') %>
+    <%- include('partials/gotop.ejs') %>
+</body>
+</html>

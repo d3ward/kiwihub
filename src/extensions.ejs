@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('partials/head.ejs',
+		{
+			page:'extensions',
+			title:'Extensions - KiwiHub',
+			description:'A curated list of free and open source Chrome extensions for Kiwi Browser',
+			url: 'd3ward.github.io/kiwihub/extensions',
+			preview_thumbnail:'https://d3ward.github.io/kiwihub/assets/preview_kiwihub.jpg',
+			keywords:'kiwi, kiwi browser, extensions, open source, free'
+		}) %>
+	<body>
+		
+		<%- include('partials/support_me.ejs') %>
+		<%- include('partials/changelog.ejs') %>
+		<%- include('partials/header.ejs', {page:'extensions'}) %>
+		<main>
+			<a href="/kiwihub/" class="btn btn-sgd btn-kh">
+				<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+					<path d="M5 12l14 0" />
+					<path d="M5 12l6 6" />
+					<path d="M5 12l6 -6" />
+				  </svg>
+				KiwiHub</a>
+			<div class="card _ta-center">
+				<div class="_aos-top">
+					<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
+					  </svg>
+				</div>
+				<div class="_aos-bottom">
+					<h3><strong>Extensions for Kiwi Browser</strong></h3>
+					<p>A curated list of free and open source Chrome extensions for Kiwi Browser</p>
+				</div>
+			</div>
+			<section>
+				<% const extensions=require('./data/extensions.json') %>
+					<div class="grid keep-width _overflowhidden" id="ext-grid" style="min-height: 100vh;">
+						<% for (let key in extensions) { %>
+							<% value=extensions[key]%>
+								<% if (key !='default' && !value.hide) { %>
+									<div class="col-4">
+										<div class="card _aos-bottom">
+											<div class="badges">
+												<div>
+													<%= value.category %>
+													
+												</div>
+												
+												<% if ( value.archived ) { %>
+													<div style="background-color: var(--red)!important;"> Archived
+												 </div>
+												<% } %>
+											</div>
+											<div class="img-w"><img src="<%= value.logo %>" alt=""></div>
+											<h3 class="_txt-center">
+												<%= value.name %>
+											</h3>
+											<p>
+												<%= value.description %>
+											</p>
+		
+											<div class="links">
+												<% if ( value.officialurl ) { %>
+													<a href="<%= value.officialurl %>" class="btn" target="_blank">
+														<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+															<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+															<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+															<path d="M11 13l9 -9" />
+															<path d="M15 4h5v5" />
+														  </svg>
+														   &nbsp; Official Website</a>
+													<% } %>
+												<% if ( value.githuburl ) { %>
+													<a href="<%= value.githuburl %>" class="btn" target="_blank"><svg role="img"
+															viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+															fill="currentColor">
+															<title>GitHub</title>
+															<path
+																d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
+															</path>
+														</svg> &nbsp; GitHub</a>
+													<% } %>
+													<% if ( value.cwsurl ) { %>
+														<a href="<%= value.cwsurl %>" class="btn" target="_blank">
+															<svg fill="currentColor" viewBox="0 0 164.971 165.371" xmlns="http://www.w3.org/2000/svg"><path d="M157.197 7.4l-149.61.188c0 66.712-1.023 94.137-.087 146.89.51 3.359 5.63 3.301 8.604 3.358-.956-20.117 3.1-38.456 19.609-56.557 10.198-9.994 28.106-18.394 44.691-18.265 22.169-.46 40.195 7.035 57.102 27.838 7.568 11.79 11.613 31.058 12.508 47.181 0 0 7.16-.072 7.166-3.603.814-48.153.457-93.448.017-147.03zM56.693 22.678h49.133c8.08.163 7.52 15.066 0 15.117H56.693c-7.656-.558-7.452-14.774 0-15.117zm27.202 67.906c-20.353-.262-36.141 7.998-48.737 22.61 1.865 3.197 18.023 34.633 18.424 28.1 1.986-7.876 7.408-13.744 14.336-17.696 5.785-2.854 5.538-2.831 32.57-3.09 9.966-.098 21.928-.154 33.893-.666-8.222-14.695-22.513-26.33-41.48-28.617a80.028 80.028 0 00-9.006-.641zm-53.49 30.537c-.305.075-1.094 1.256-1.891 2.842-4.741 9.43-6.238 16.733-5.748 28.05l.26 6.003 14.119-.223c7.765-.123 14.176-.274 14.248-.334-5.418-13.207-12.899-24.91-20.934-36.338a.101.101 0 00-.055 0zm72.331 6.934c5.66 6.106 10.503 15.55 9.153 29.591l3.367.122 26.812.275c1.097-10.242-1.314-18.527-3.54-29.795l-35.792-.193zm-19.847.279c-15.527-.047-22.855 14.682-21.494 29.32l42.24-.248c2.746-11.79-.693-24.577-13.592-28.103-2.551-.654-4.936-.962-7.154-.969z" paint-order="stroke markers fill"></path></svg>
+															 &nbsp; Chrome Web Store</a>
+														<% } %>
+											</div>
+										</div>
+									</div>
+									<% } %>
+										<% } %>
+					</div>
+			</section>
+		</main>
+		<%- include('partials/footer.ejs') %>
+		<%- include('partials/gotop.ejs') %>
+	</body>
+</html>

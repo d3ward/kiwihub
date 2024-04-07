@@ -1,0 +1,82 @@
+[
+	{
+		"id" : "gbk",
+		"name": "Go Back",
+		"description": "Go back to the previous webpage",
+		"code": "window.history.back()"
+	},
+	{
+		"id" : "gfd",
+		"name": "Go Forward",
+		"description": "Go back to the previous webpage",
+		"code": "window.history.forward()"
+	},
+	{
+		"id" : "stt",
+		"name": "Scroll to Top",
+		"description": "Scroll to the top of the webpage",
+		"code": "window.scrollTo({ top: 0, behavior: 'smooth' })"
+	},
+	{
+		"id" : "stb",
+		"name": "Scroll to Bottom",
+		"description": "Scroll to the bottom of the webpage",
+		"code": "window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })"
+	},
+	{
+		"id" : "lnt",
+		"name": "Link in New Tab",
+		"description": "Open a link in a new tab",
+		"code": "window.open(params.url, '_blank')",
+		"params": ["url"]
+	},
+	{
+		"id" : "tep",
+		"name": "Translate Page",
+		"description": "Translate the current webpage with service of your choice",
+		"code": "window.open(`https://translate.google.com/translate?sl=auto&tl=${params.language}&u=${encodeURIComponent(window.location.href)}`, '_blank')",
+		"params": ["translator"]
+	},
+	{
+		"id" : "rlp",
+		"name": "Reload Page",
+		"description": "Reload the current webpage",
+		"code": "location.reload()"
+	},
+	{
+		"id" : "curl",
+		"name": "Copy URL",
+		"description": "Copy the current webpage URL to the clipboard",
+		"code": "navigator.clipboard.writeText(window.location.href)"
+	},
+	{
+		"id" : "cct",
+		"name": "Close Tab",
+		"description": "Close the current tab",
+		"code": "window.close()"
+	},
+	{
+		"id" : "ppg",
+		"name": "Print Page",
+		"description": "Print the current webpage",
+		"code": "window.print()"
+	},
+	{
+		"id" : "tfs",
+		"name": "Toggle Fullscreen",
+		"description": "Toggle fullscreen mode for the webpage",
+		"code": "document.documentElement.requestFullscreen()"
+	},
+	{
+		"id" : "cds",
+		"name": "Clear Data",
+		"description": "Clear the local storage/cookie of the webpage",
+		"code": "localStorage.clear();document.cookie = ''"
+	},
+	{
+		"id" : "atf",
+		"name": "Add to Favorites",
+		"description": "Add the current webpage to favorites/bookmarks",
+		"code": "window.external.AddFavorite(location.href, document.title)"
+	}
+]
