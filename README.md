@@ -5,8 +5,10 @@
 	title="b2ntp" width="160" height="160" />
 </p>
 
-What sets Kiwi Browser apart is its unique ability to bring desktop Chrome extensions to the mobile platform, enriching the mobile browsing experience like never before. 
+What sets Kiwi Browser apart is its unique ability to bring desktop Chrome extensions to the mobile platform, enriching the mobile browsing experience like never before.
+
 However, for new users, diving into the vast sea of extensions, userscripts, actions, and guides can be overwhelming. 
+
 That's where this awesome KiwiHub comes in. It serves as a valuable resource for the Kiwi community, providing recommendations and insights into the best extensions, alongside a carefully curated selection of userscripts, actionable tips, and comprehensive guides. This hub ensures that every user can fully leverage the power of Kiwi Browser, making their browsing experience as enriching and efficient as possible.
 
 
