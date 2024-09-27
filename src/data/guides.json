@@ -11,5 +11,19 @@
 			"extensions",
 			"productivity"
 		]
+	},
+	{
+		"id": "backup-tabs",
+		"title": "Export URLs from Kiwi Browser tabs using ADB",
+		"author": "vlasky",
+		"page": "backup-tabs.html",
+		"date": "2024-09-06",
+		"description": "Export all the URLs of your open browser tabs in Kiwi on your Android phone using the adb tools on Windows",
+		"labels": [
+			"backup",
+			"tabs",
+			"no-root",
+			"adb"
+		]
 	}
 ]
