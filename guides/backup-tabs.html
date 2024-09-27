@@ -1,0 +1,174 @@
+<h3>Export URLs from Kiwi Browser tabs using ADB</h3>
+<div>
+    Credits: <a href="https://github.com/vlasky"> vlasky </a> Wrapped from : <a href="https://github.com/kiwibrowser/src.next/issues/122">#122</a>
+</div>
+
+<p>To export all the URLs of open browser tabs in Kiwi on your Android phone using the <code>adb</code> utility on
+    Windows, you can follow these steps.</p>
+<p>This procedure has been tested with Kiwi Browser running under Android 14 on a Samsung Galaxy S22 Ultra, connected
+    via USB
+    to my Windows 10 PC</p>
+<h3 id="prerequisites-">Prerequisites:</h3>
+<ul>
+    <li><strong>Android Device</strong>: Ensure USB debugging is enabled on your Android device.</li>
+    <li><strong>ADB Installed</strong>: Ensure you have the Android Debug Bridge (ADB) installed on your Windows
+        computer.</li>
+    <li><strong>Kiwi Browser Installed</strong>: Ensure Kiwi browser is installed and running on your Android device.
+    </li>
+    <li><strong>USB Cable</strong>: Ensure your Android device is connected to your Windows computer via USB.</li>
+</ul>
+<h3 id="steps-">Steps:</h3>
+<ol>
+    <li>
+        <p><strong>Enable Developer Options and USB Debugging on Android</strong>:</p>
+        <ul>
+            <li>Go to <code>Settings</code> &gt; <code>About phone</code>.</li>
+            <li>Tap on <code>Build number</code> seven times to enable Developer options.</li>
+            <li>Go to <code>Settings</code> &gt; <code>System</code> &gt; <code>Developer options</code>.</li>
+            <li>Enable <code>USB debugging</code>.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Connect Android Device to Windows Computer</strong>:</p>
+        <ul>
+            <li>Connect your Android device to your Windows computer using a USB cable.</li>
+            <li>Allow USB debugging authorization on your Android device when prompted.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Open Command Prompt on Windows</strong>:</p>
+        <ul>
+            <li>Press <code>Win + R</code>, type <code>cmd</code>, and press Enter.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Verify ADB Connection</strong>:</p>
+        <ul>
+            <li>In the Command Prompt, type:
+                <pre><code class="lang-bash"><span class="hljs-attribute">adb devices</span>
+</code></pre>
+            </li>
+            <li>Ensure your device is listed. If not, troubleshoot the USB connection and authorization.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Use Chrome Remote Debugging</strong>:</p>
+        <ul>
+            <li>Open Kiwi browser on your Android device.</li>
+            <li>In the Command Prompt, type:
+                <pre><code><span class="hljs-selector-tag">adb</span> <span class="hljs-selector-tag">forward</span> <span class="hljs-selector-tag">tcp</span><span class="hljs-selector-pseudo">:9222</span> <span class="hljs-selector-tag">localabstract</span><span class="hljs-selector-pseudo">:chrome_devtools_remote</span>
+</code></pre>
+            </li>
+            <li>Open a web browser on your Windows computer and go to:
+                <pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//localhost:9222/json</span>
+</code></pre>
+            </li>
+            <li>This will display a JSON file containing information about all open tabs in the Kiwi browser.</li>
+            <li>Copy the content of the JSON file displayed in your web browser.</li>
+            <li>Save it as a file named <code>kiwi_tabs.json</code>.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Extract URLs from JSON</strong>:</p>
+        There are many ways you can extract URLs and page titles from the JSON file. Here is a Windows
+        PowerShell script that will do the job:
+        <pre>
+            <code>
+# Load the JSON file
+$json = Get-Content -Raw -Path "kiwi_tabs.json" | ConvertFrom-Json
+
+# Filter out entries where 'id' is not a numerical value and sort by 'id' numerically
+$filteredSortedJson = $json | Where-Object { $_.id -match '^\d+$' } | Sort-Object { [int]$_.id }
+
+# Initialize a counter for the incrementing number
+$counter = 1
+
+# Process each entry and format the output
+$output = $filteredSortedJson | ForEach-Object {
+  "$counter"
+  $_.title
+  $_.url
+  ""
+  $counter++
+}
+
+# Output the result to the console or save to a file
+$output | Out-File -FilePath "kiwi_tabs.txt" -Encoding utf8
+            </code>
+        </pre>
+        <h5>Explanation :</h5>
+        <p>
+            <ol>
+                <li>Load the JSON file: The script reads the JSON file and converts it into a PowerShell object using
+                    ConvertFrom-Json.</li>
+                    <li>Filter and Sort: It filters out entries where the id is not numerical using a regular expression (-match
+                        '^\d+$'). Then it sorts the remaining entries numerically by id.</li>
+                        <li>
+                            Auto-increment Counter: A counter is initialized to start from 1, which will be used to number the
+                            entries.
+                        </li>
+                        <li>
+                            Process Each Entry: The script processes each entry, outputting the incrementing number on the first
+                            line, the title on the second line, and the URL on the third line. An empty line is added after each entry.
+                        </li>
+                        <li>Output: The result is saved to a file named kiwi_tabs.txt with UTF-8 encoding.
+
+                        </li>
+            </ol>
+        </p>
+        <h5>Running the script</h5>
+        <ol>
+            <li>
+                Save the script in a .ps1 file, for example, process-json.ps1.
+            </li>
+            <li>
+                Run the script in PowerShell:
+            </li>
+            <li>
+                <pre>
+                    <code>.\process-json.ps1</code>
+                </pre>
+            </li>
+        </ol>
+        <p>This will create an <code>kiwi_tabs.txt</code> file in the same directory, with the following format:</p>
+        <pre><code>1
+Page Title 1
+URL 1
+
+2
+Page Title 2
+URL 2</code></pre>
+        <p>The entries with non-numerical <code>id</code> values will be skipped, and the remaining entries will be numbered and
+            formatted as specified.</p>
+
+    </li>
+
+    <li>
+        <p><strong>Finishing up</strong>:
+            <ul>
+                <li>
+                    <p>To stop ADB forwarding, you can use the <code>adb forward --remove</code> command followed by the local
+                    port you forwarded. Here is how you can do it:</p>
+                </li>
+                <li>
+                    <p><strong>Open Command Prompt</strong>:</p>
+                    <ul>
+                        <li>Press <code>Win + R</code>, type <code>cmd</code>, and press Enter.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p><strong>Remove the Forwarding</strong>:</p>
+                    <ul>
+                        <li>To remove the specific port forwarding you set up (e.g., tcp:9222), type:
+                            <pre><code>adb forward --remove tcp:9222</code></pre>
+                        </li>
+                        <li>If you want to remove all port forwarding, type:
+                            <pre><code>adb forward --remove-all</code></pre>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>These commands will stop ADB from forwarding the specified ports, effectively stopping the remote debugging
+                connection you established earlier.</p>
+    </li>  
+</ol>
