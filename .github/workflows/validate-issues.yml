@@ -1,0 +1,50 @@
+name: Validate Issues
+
+on:
+  issues:
+    types:
+      - opened
+  workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'Issue number to validate'
+        required: true
+        type: number
+
+jobs:
+  validate-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
+      - name: Extract Issue Content
+        id: extract_content
+        uses: peter-evans/issue-comment@v2
+        with:
+          with:
+          issue-number: ${{ github.event.inputs.issue-number }
+          comment-body: ${{ github.event.issue.body }}
+
+      - name: Validate Issue Template
+        run: |
+          echo "Validating issue content..."
+          REQUIRED_FIELDS=("Extension Name" "Chrome Web Store URL" "Official Website URL" "Extension Category" "Bug Description")
+          EMPTY_FIELDS=()
+          for field in "${REQUIRED_FIELDS[@]}"; do
+            if [[ ${{ steps.extract_content.outputs.comment-body }} != *"$field"* ]]; then
+              EMPTY_FIELDS+=("$field")
+            fi
+          done
+          if [ ${#EMPTY_FIELDS[@]} -ne 0 ]; then
+            echo "The following fields are missing: ${EMPTY_FIELDS[@]}"
+            exit 1
+          fi
+          echo "Issue template validated successfully."
+      - name: Add Label for Validation Result
+        uses: peter-evans/add-labels@v3
+        with:
+          labels: |
+            validated
+            
