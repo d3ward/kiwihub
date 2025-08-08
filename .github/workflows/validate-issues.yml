@@ -24,7 +24,7 @@ jobs:
         uses: peter-evans/issue-comment@v2
         with:
           with:
-          issue-number: ${{ github.event.inputs.issue-number }
+          issue-number: ${{ github.event.inputs.issue-number }}
           comment-body: ${{ github.event.issue.body }}
 
       - name: Validate Issue Template
