@@ -1,15 +1,8 @@
-name: Validate Issues
+name: Validate and Auto-Close Empty Issues
 on:
   issues:
     types:
       - opened
-      - edited
-  workflow_dispatch:
-    inputs:
-      issue-number:
-        description: 'Issue number to validate'
-        required: true
-        type: number
 
 permissions:
   issues: write
@@ -19,304 +12,125 @@ jobs:
   validate-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-      
-      - name: Get Issue Data
-        id: issue_data
+      - name: Check and Close Empty Issues
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            let issueNumber;
-            let issueBody;
-            let issueTitle;
-            let issueLabels;
+            const issue = context.payload.issue;
+            const issueNumber = issue.number;
+            const issueTitle = issue.title;
+            const issueBody = issue.body || '';
             
-            // Determine if triggered manually or by issue event
-            if (context.eventName === 'workflow_dispatch') {
-              issueNumber = parseInt(context.payload.inputs['issue-number']);
-              const issue = await github.rest.issues.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issueNumber
-              });
-              issueBody = issue.data.body || '';
-              issueTitle = issue.data.title || '';
-              issueLabels = issue.data.labels.map(l => l.name);
-            } else {
-              issueNumber = context.issue.number;
-              issueBody = context.payload.issue.body || '';
-              issueTitle = context.payload.issue.title || '';
-              issueLabels = context.payload.issue.labels.map(l => l.name);
-            }
+            let shouldClose = false;
+            let reasons = [];
             
-            // Set outputs
-            core.setOutput('issue_number', issueNumber);
-            core.setOutput('issue_body', issueBody);
-            core.setOutput('issue_title', issueTitle);
-            core.setOutput('issue_labels', JSON.stringify(issueLabels));
-            
-            return { issueNumber, issueBody, issueTitle, issueLabels };
-
-      - name: Validate Issue Content
-        id: validate
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueBody = `${{ steps.issue_data.outputs.issue_body }}`;
-            const issueTitle = `${{ steps.issue_data.outputs.issue_title }}`;
-            const issueLabels = JSON.parse(`${{ steps.issue_data.outputs.issue_labels }}`);
-            const issueNumber = parseInt(`${{ steps.issue_data.outputs.issue_number }}`);
-            
-            let validationErrors = [];
-            let validationWarnings = [];
-            let isValid = true;
-            
-            // Check if title still has placeholder
+            // Check 1: Title still has template placeholder
             if (issueTitle.includes('[ NAME OF EXTENSION ]') || 
                 issueTitle.includes('[ NAME OF ACTION ]')) {
-              validationErrors.push('❌ Issue title still contains template placeholder');
-              isValid = false;
+              shouldClose = true;
+              reasons.push('Issue title contains unchanged template placeholder');
             }
             
-            // Detect template type based on labels or content
-            const isExtensionTemplate = issueLabels.includes('extension') || 
-                                       issueBody.includes('Extension details') ||
-                                       issueBody.includes('Chrome Web Store URL');
-            const isActionTemplate = issueLabels.includes('action') || 
-                                    issueBody.includes('Action details') ||
-                                    issueBody.includes('Action code');
+            // Check 2: Look for empty fields (nothing after the colon)
+            const fieldsToCheck = [
+              'Name :',
+              'Description :',
+              'Chrome Web Store URL',
+              'Official Extension Website',
+              'Extension category',
+              'Action code'
+            ];
             
-            if (isExtensionTemplate) {
-              console.log('Validating as Extension template...');
-              
-              // Check required fields for Extension template
-              const requiredFields = [
-                { field: 'Name :', error: 'Extension name is missing or empty' },
-                { field: 'Extension category', error: 'Extension category is missing or empty' },
-              ];
-              
-              for (const req of requiredFields) {
-                const regex = new RegExp(`${req.field}\\s*(.+)`, 'i');
+            let emptyFields = [];
+            for (const field of fieldsToCheck) {
+              if (issueBody.includes(field)) {
+                // Extract what comes after this field
+                const regex = new RegExp(`${field}[^:]*:\\s*([^\\n]*)`, 'i');
                 const match = issueBody.match(regex);
-                if (!match || match[1].trim() === '' || match[1].trim() === ':') {
-                  validationErrors.push(`❌ ${req.error}`);
-                  isValid = false;
+                
+                if (match) {
+                  const value = match[1].trim();
+                  // Check if empty or contains only template helper text
+                  if (value === '' || 
+                      value === ':' ||
+                      value.includes('optional if the extension') ||
+                      value.includes('like security , productivity etc') ||
+                      value.includes('use ``` at the beginning')) {
+                    emptyFields.push(field.replace(' :', ''));
+                  }
                 }
               }
+            }
+            
+            // If 3 or more fields are empty, close the issue
+            if (emptyFields.length >= 3) {
+              shouldClose = true;
+              reasons.push(`${emptyFields.length} required fields are empty: ${emptyFields.join(', ')}`);
+            }
+            
+            // Check 3: All checkboxes unchecked
+            const uncheckedCount = (issueBody.match(/- \[ \]/g) || []).length;
+            const checkedCount = (issueBody.match(/- \[x\]/gi) || []).length;
+            
+            if (uncheckedCount > 0 && checkedCount === 0) {
+              shouldClose = true;
+              reasons.push('All prerequisite checkboxes are unchecked');
+            }
+            
+            // Close the issue if validation failed
+            if (shouldClose) {
+              // Post explanation comment
+              const comment = `## ❌ Issue Automatically Closed - Incomplete Submission\n\n` +
+                `Your issue has been automatically closed because it appears to be an unchanged or empty template.\n\n` +
+                `**Reasons:**\n` +
+                reasons.map(r => `- ${r}`).join('\n') +
+                `\n\n` +
+                `### To submit a valid issue:\n` +
+                `1. Create a new issue\n` +
+                `2. **Change the title** from \`[ NAME OF EXTENSION ]\` to the actual extension/action name\n` +
+                `3. **Fill in all required fields** with actual information (not just leave them empty)\n` +
+                `4. **Check the prerequisite boxes** to confirm you've tested the extension/action\n\n` +
+                `Example of a properly filled field:\n` +
+                `\`\`\`\n` +
+                `Name : AdBlock Plus\n` +
+                `Chrome Web Store URL : https://chrome.google.com/webstore/detail/adblock-plus/...\n` +
+                `\`\`\`\n\n` +
+                `Please create a new issue with complete information. Thank you!`;
               
-              // Check for at least one URL (Chrome Web Store OR Official Website)
-              const chromeStoreRegex = /Chrome Web Store URL[^:]*:\s*(.+)/i;
-              const websiteRegex = /Official Extension Website[^:]*:\s*(.+)/i;
-              const chromeMatch = issueBody.match(chromeStoreRegex);
-              const websiteMatch = issueBody.match(websiteRegex);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: comment
+              });
               
-              const hasChrome = chromeMatch && chromeMatch[1].trim() !== '' && 
-                               !chromeMatch[1].trim().includes('optional if');
-              const hasWebsite = websiteMatch && websiteMatch[1].trim() !== '';
+              // Add label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['invalid-template']
+              });
               
-              if (!hasChrome && !hasWebsite) {
-                validationErrors.push('❌ At least one URL is required (Chrome Web Store OR Official Website)');
-                isValid = false;
-              }
+              // Close the issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                state: 'closed',
+                state_reason: 'not_planned'
+              });
               
-            } else if (isActionTemplate) {
-              console.log('Validating as Action template...');
-              
-              // Check required fields for Action template
-              const requiredFields = [
-                { field: 'Name :', error: 'Action name is missing or empty' },
-                { field: 'Description :', error: 'Action description is missing or empty' },
-              ];
-              
-              for (const req of requiredFields) {
-                const regex = new RegExp(`${req.field}\\s*(.+)`, 'i');
-                const match = issueBody.match(regex);
-                if (!match || match[1].trim() === '' || match[1].trim() === ':') {
-                  validationErrors.push(`❌ ${req.error}`);
-                  isValid = false;
-                }
-              }
-              
-              // Check for action code
-              const codeBlockRegex = /```[\s\S]*?```/;
-              const hasCodeBlock = codeBlockRegex.test(issueBody);
-              const actionCodeRegex = /Action code[^:]*:\s*(.+)/is;
-              const actionCodeMatch = issueBody.match(actionCodeRegex);
-              
-              if (!hasCodeBlock && (!actionCodeMatch || actionCodeMatch[1].trim() === '')) {
-                validationErrors.push('❌ Action code is missing');
-                isValid = false;
-              }
+              console.log(`Closed issue #${issueNumber} - Template not filled`);
             } else {
-              validationWarnings.push('⚠️ Could not detect template type (Extension or Action)');
-            }
-            
-            // Check prerequisites checkboxes
-            const checkboxRegex = /- \[x\]/gi;
-            const uncheckedRegex = /- \[ \]/gi;
-            const checkedCount = (issueBody.match(checkboxRegex) || []).length;
-            const uncheckedCount = (issueBody.match(uncheckedRegex) || []).length;
-            
-            if (uncheckedCount > 0) {
-              validationWarnings.push(`⚠️ ${uncheckedCount} prerequisite(s) not checked`);
-            }
-            
-            // Check if body is too short (likely unchanged template)
-            if (issueBody.length < 200) {
-              validationWarnings.push('⚠️ Issue description seems too short');
-            }
-            
-            // Set outputs
-            core.setOutput('is_valid', isValid);
-            core.setOutput('errors', JSON.stringify(validationErrors));
-            core.setOutput('warnings', JSON.stringify(validationWarnings));
-            core.setOutput('issue_number', issueNumber);
-            
-            return { isValid, validationErrors, validationWarnings };
-
-      - name: Post Validation Comment
-        if: steps.validate.outputs.is_valid == 'false'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = parseInt(`${{ steps.validate.outputs.issue_number }}`);
-            const errors = JSON.parse(`${{ steps.validate.outputs.errors }}`);
-            const warnings = JSON.parse(`${{ steps.validate.outputs.warnings }}`);
-            
-            let comment = `## ⚠️ Issue Validation Failed\n\n`;
-            comment += `Thank you for your submission! However, your issue needs some corrections:\n\n`;
-            
-            if (errors.length > 0) {
-              comment += `### Required Fixes:\n`;
-              errors.forEach(error => {
-                comment += `${error}\n`;
+              // Issue is valid, add validated label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['validated']
               });
-              comment += `\n`;
-            }
-            
-            if (warnings.length > 0) {
-              comment += `### Warnings:\n`;
-              warnings.forEach(warning => {
-                comment += `${warning}\n`;
-              });
-              comment += `\n`;
-            }
-            
-            comment += `### What to do next:\n`;
-            comment += `1. Edit your issue using the edit button\n`;
-            comment += `2. Fill in all required fields\n`;
-            comment += `3. Make sure to replace placeholder text like \`[ NAME OF EXTENSION ]\`\n`;
-            comment += `4. Check all applicable prerequisite checkboxes\n\n`;
-            comment += `Once you've made these changes, the issue will be automatically re-validated.`;
-            
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: comment
-            });
-
-      - name: Add Labels
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = parseInt(`${{ steps.validate.outputs.issue_number }}`);
-            const isValid = `${{ steps.validate.outputs.is_valid }}` === 'true';
-            const warnings = JSON.parse(`${{ steps.validate.outputs.warnings }}`);
-            
-            const labelsToAdd = [];
-            const labelsToRemove = [];
-            
-            if (isValid) {
-              labelsToAdd.push('validated');
-              labelsToRemove.push('needs-correction', 'invalid');
               
-              if (warnings.length === 0) {
-                labelsToAdd.push('ready-for-review');
-              }
-            } else {
-              labelsToAdd.push('needs-correction');
-              labelsToRemove.push('validated', 'ready-for-review');
+              console.log(`Issue #${issueNumber} passed validation`);
             }
-            
-            // Add labels
-            if (labelsToAdd.length > 0) {
-              try {
-                await github.rest.issues.addLabels({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  labels: labelsToAdd
-                });
-              } catch (error) {
-                console.log(`Could not add labels: ${error.message}`);
-              }
-            }
-            
-            // Remove labels
-            for (const label of labelsToRemove) {
-              try {
-                await github.rest.issues.removeLabel({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issueNumber,
-                  name: label
-                });
-              } catch (error) {
-                // Label might not exist on the issue, that's okay
-                console.log(`Could not remove label ${label}: ${error.message}`);
-              }
-            }
-
-      - name: Close Invalid Issue (Optional)
-        if: steps.validate.outputs.is_valid == 'false' && github.event_name == 'issues' && github.event.action == 'opened'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = parseInt(`${{ steps.validate.outputs.issue_number }}`);
-            
-            // Optional: Uncomment the following lines to automatically close invalid issues
-            // await github.rest.issues.update({
-            //   owner: context.repo.owner,
-            //   repo: context.repo.repo,
-            //   issue_number: issueNumber,
-            //   state: 'closed',
-            //   state_reason: 'not_planned'
-            // });
-            
-            console.log(`Issue #${issueNumber} marked as needs-correction but left open for user to fix`);
-
-      - name: Success Comment
-        if: steps.validate.outputs.is_valid == 'true' && github.event_name == 'issues' && github.event.action == 'edited'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = parseInt(`${{ steps.validate.outputs.issue_number }}`);
-            const warnings = JSON.parse(`${{ steps.validate.outputs.warnings }}`);
-            
-            let comment = `## ✅ Issue Validated Successfully!\n\n`;
-            comment += `Thank you for updating your issue! It now meets all the required criteria.\n\n`;
-            
-            if (warnings.length > 0) {
-              comment += `### Minor Warnings (optional to fix):\n`;
-              warnings.forEach(warning => {
-                comment += `${warning}\n`;
-              });
-              comment += `\n`;
-            }
-            
-            comment += `Your issue is now ready for review by the maintainers.`;
-            
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issueNumber,
-              body: comment
-            });
