@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
     gh-pages-deploy:
       name: Deploying to gh-pages
