@@ -1,38 +1,38 @@
 @charset "utf-8"
 
-@import "./settings/variables"
-@import "./theme/light"
-@import "./theme/dark"
+@use "./settings/variables" as *
+@use "./theme/light"
+@use "./theme/dark"
 
-@import "./base/basic"
-@import "./extra/aos"
-@import "./elements/typography"
-@import "./elements/form"
+@use "./base/basic"
+@use "./extra/aos"
+@use "./elements/typography"
+@use "./elements/form"
 
-@import "./layout/navbar"
-@import "./layout/header"
-@import "./layout/container"
-@import "./layout/grid"
-@import "./layout/footer"
-@import "./elements/code"
-@import "./elements/button"
-@import "./components/card"
-@import "./components/modal"
-@import "./components/snackbar"
-@import "./components/gotop_link"
-@import "./extra/tooltip"
-@import "./extra/alert"
+@use "./layout/navbar"
+@use "./layout/header"
+@use "./layout/container"
+@use "./layout/grid"
+@use "./layout/footer"
+@use "./elements/code"
+@use "./elements/button"
+@use "./components/card"
+@use "./components/modal"
+@use "./components/snackbar"
+@use "./components/gotop_link"
+@use "./extra/tooltip"
+@use "./extra/alert"
 
-@import "./utilities/alignment"
-@import "./utilities/position"
-@import "./utilities/background"
-@import "./utilities/border"
-@import "./utilities/display"
-@import "./utilities/margin"
-@import "./utilities/general"
-@import "./utilities/padding"
-@import "./utilities/spacer"
-@import "./utilities/text"
+@use "./utilities/alignment"
+@use "./utilities/position"
+@use "./utilities/background"
+@use "./utilities/border"
+@use "./utilities/display"
+@use "./utilities/margin"
+@use "./utilities/general"
+@use "./utilities/padding"
+@use "./utilities/spacer"
+@use "./utilities/text"
 #ext-grid>div
 	margin-top: 1rem
 
@@ -58,7 +58,7 @@
 	z-index: 1
 	position: absolute
 	display: flex
-	gap: .5rem 
+	gap: .5rem
 
 	&>*
 		max-width: fit-content
